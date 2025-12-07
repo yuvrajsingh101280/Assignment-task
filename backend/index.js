@@ -14,9 +14,25 @@ const port = process.env.PORT
 
 // database
 await connectTODB()
+
+// cors
+const allowedOrigins = [
+    "http://localhost:5173",
+    // "https://green-basket-new-hncq.vercel.app"
+];
+app.use(cors({
+    origin: function (origin, callback) {
+        if (!origin || allowedOrigins.includes(origin)) {
+            callback(null, true);
+        } else {
+            callback(new Error("Not allowed by CORS"));
+        }
+    },
+    credentials: true
+}));
 // middleware
 app.use(express.json())
-app.use(cors())
+
 app.use(cookieParser())
 app.use(morgan("dev"))
 
