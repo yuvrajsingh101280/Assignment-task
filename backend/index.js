@@ -19,6 +19,7 @@ await connectTODB()
 const allowedOrigins = [
     "http://localhost:5173",
     // "https://green-basket-new-hncq.vercel.app"
+    "https://assignment-task-black.vercel.app"
 ];
 app.use(cors({
     origin: function (origin, callback) {
